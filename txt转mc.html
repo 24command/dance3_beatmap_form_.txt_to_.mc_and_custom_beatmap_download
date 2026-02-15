@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +16,7 @@
             <label>Background: <input v-model="background" type="text"></label><br>
             <label>Offset: <input v-model="offset" type="number" step="1" readonly></label><br>
             <label>Sound: <input v-model="sound" type="text"></label><br>
-            <label>Title: <input v-model="title" type="text"></label><br>
+            <label>Title: <input v-model="title" type="text" readonly></label><br>
             <label>Artist: <input v-model="artist" type="text"></label><br>
             <label>BPM: <input v-model="bpm" type="number" step="0.1"></label><br>
         </div>
@@ -246,6 +246,9 @@
                         // 获取 BeginSeconds 并计算 Offset
                         const beginSeconds = parseFloat(data.BeginSeconds);
                         this.offset = -Math.round(beginSeconds * 1000);
+
+                        // 获取 GoodsName 并设置为 title
+                        this.title = data.GoodsName;
 
                         if (this.listFileUrls.length === 0) {
                             this.currentStep = "未找到可下载的文件";
